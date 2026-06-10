@@ -10,7 +10,7 @@ export default function RegisterPage() {
   const register = async () => {
     const res = await fetch("/api/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email, password, role }),
+      body: JSON.stringify({ email, password, role: "user" }),
     });
 
     const data = await res.json();
@@ -43,14 +43,14 @@ export default function RegisterPage() {
           style={styles.input}
         />
 
-        <select
+        {/* <select
           value={role}
           onChange={(e) => setRole(e.target.value)}
           style={styles.input}
         >
           <option value="user">일반 고객</option>
           <option value="admin">관리자</option>
-        </select>
+        </select> */}
 
         <button onClick={register} style={styles.button}>
           회원가입
