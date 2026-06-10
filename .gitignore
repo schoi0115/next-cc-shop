@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#json
+*.json
+
+# 이미지 파일 제외
+*.jpg
+*.jpeg
+*.png
+
+# 특정 폴더 전체 제외 (예: public/images)
+public/images/
