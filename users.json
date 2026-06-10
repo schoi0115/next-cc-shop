@@ -1,0 +1,17 @@
+[
+  {
+    "email": "admin@test.com",
+    "password": "$2a$10$JH2e6Yp8xkqz1n7Zl7zO0u7U6pQ7q2eY8h8x9p8z9q9r9s9t9u9y",
+    "role": "admin"
+  },
+  {
+    "email": "admin@admin.com",
+    "password": "$2b$10$ibQYMEoEg4KDOKmUk5tXme9DmZf9kkXvtnUGcI4D2stXWYg7yQhkC",
+    "role": "admin"
+  },
+  {
+    "email": "admin1@admin.com",
+    "password": "$2b$10$uTsWYXU10v59gYS3hmNAau/.R6QDVFCW6fJLK47u.PfW6AGWGVTsm",
+    "role": "admin"
+  }
+]
