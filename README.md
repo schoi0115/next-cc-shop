@@ -16,65 +16,65 @@ Admin 계정은 상품을 업로드/삭제 할수 있고, 대표 상품으로 �
 
 Admin 계정 생성 방지, user 로만 회원 가입 가능.
 
-/app
-│   globals.css
-│   layout.tsx
-│   middleware.js
-│   page.jsx                ← Home 페이지
-│
-├── about
-│     page.jsx
-│
-├── admin
-│   │   layout.jsx          ← admin 전용 레이아웃 (권한 체크)
-│   │   page.jsx            ← admin 메인 페이지 (대시보드)
-│   │
-│   ├── products
-│   │       page.jsx        ← 상품 목록 + 삭제 + 대표 설정 버튼
-│   │
-│   └── upload
-│           page.jsx        ← 상품 업로드 페이지
-│
-├── api
-│   ├── auth
-│   │   ├── login
-│   │   │       route.js
-│   │   ├── logout
-│   │   │       route.js
-│   │   └── register
-│   │           route.js
-│   │
-│   ├── home
-│   │   ├── feature
-│   │   │       route.js    ← 대표 이미지 설정
-│   │   └── unfeature
-│   │           route.js    ← 대표 이미지 해제
-│   │
-│   └── products
-│       ├── delete
-│       │       route.js
-│       ├── list
-│       │       route.js
-│       └── upload
-│               route.js
-│
-├── auth
-│   ├── login
-│   │       page.jsx
-│   └── register
-│           page.jsx
-│
-├── components
-│       Header.jsx
-│
-├── contact
-│       page.jsx
-│
-├── deals
-│       page.jsx
-│
-└── products
-        page.jsx
+/app  
+│   globals.css  
+│   layout.tsx  
+│   middleware.js  
+│   page.jsx                ← Home 페이지  
+│  
+├── about  
+│     page.jsx  
+│  
+├── admin  
+│   │   layout.jsx          ← admin 전용 레이아웃 (권한 체크)  
+│   │   page.jsx            ← admin 메인 페이지 (대시보드)  
+│   │  
+│   ├── products  
+│   │       page.jsx        ← 상품 목록 + 삭제 + 대표 설정 버튼  
+│   │  
+│   └── upload  
+│           page.jsx        ← 상품 업로드 페이지  
+│  
+├── api  
+│   ├── auth  
+│   │   ├── login  
+│   │   │       route.js  
+│   │   ├── logout  
+│   │   │       route.js  
+│   │   └── register  
+│   │           route.js  
+│   │  
+│   ├── home  
+│   │   ├── feature  
+│   │   │       route.js    ← 대표 이미지 설정  
+│   │   └── unfeature  
+│   │           route.js    ← 대표 이미지 해제  
+│   │  
+│   └── products  
+│       ├── delete  
+│       │       route.js  
+│       ├── list  
+│       │       route.js  
+│       └── upload  
+│               route.js  
+│  
+├── auth  
+│   ├── login  
+│   │       page.jsx  
+│   └── register  
+│           page.jsx  
+│  
+├── components  
+│       Header.jsx  
+│  
+├── contact  
+│       page.jsx  
+│  
+├── deals  
+│       page.jsx  
+│  
+└── products  
+        page.jsx  
 
 
 
