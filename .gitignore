@@ -42,8 +42,13 @@ next-env.d.ts
 
 #json
 *.json
+users.json
+.users.json
 
 # 이미지 파일 제외
+/public
+/public/images
+/public/images/products
 *.jpg
 *.jpeg
 *.png
