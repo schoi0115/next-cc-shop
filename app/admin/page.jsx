@@ -1,12 +1,8 @@
 export default function AdminPage() {
   return (
     <main style={{ padding: "40px" }}>
-      <h1>관리자 페이지</h1>
-
-      <ul style={{ marginTop: "20px" }}>
-        <li><a href="/admin/upload">상품 이미지 업로드</a></li>
-        <li><a href="/admin/products">상품 관리</a></li>
-      </ul>
+      <h1>Welcome 관리자님</h1>
+      <p>좌측 메뉴에서 원하는 기능을 선택하세요.</p>
     </main>
   );
 }

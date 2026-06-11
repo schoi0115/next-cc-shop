@@ -11,13 +11,13 @@ export default function HomePage() {
 
   return (
     <main style={{ padding: "40px" }}>
-      <h1>대표 상품</h1>
+      <h1 style={{ display: "flex", flexDirection: "column", alignItems: "center"}}>대표 상품</h1>
 
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px", marginTop: "20px" }}>
         {featured.map((img) => (
           <img
             key={img}
-            src={`/images/${img}`}
+            src={img}
             alt={img}
             style={{
               width: "600px",

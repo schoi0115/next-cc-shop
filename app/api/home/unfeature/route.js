@@ -3,19 +3,21 @@ import fs from "fs";
 import path from "path";
 
 export async function POST(req) {
-  const { filename } = await req.json();
+  const body = await req.json();
+  const filename = body.filename;
 
   const filePath = path.join(process.cwd(), "public", "featured.json");
 
-  let featured = [];
-
-  if (fs.existsSync(filePath)) {
-    featured = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, "[]");
   }
 
-  featured = featured.filter((item) => item !== filename);
+  let featured = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+  // 해당 이미지 제거
+  featured = featured.filter((img) => img !== filename);
 
   fs.writeFileSync(filePath, JSON.stringify(featured, null, 2));
 
-  return NextResponse.json({ message: "대표 상품 취소됨" });
+  return NextResponse.json({ message: "대표 취소 완료" });
 }

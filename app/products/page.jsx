@@ -3,63 +3,43 @@
 import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
-  const [images, setImages] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState("all");
 
-  const loadImages = async () => {
-    const res = await fetch("/api/products/list");
+  const loadProducts = async (cat) => {
+    const url =
+      cat === "all"
+        ? "/api/products/list"
+        : `/api/products/list?category=${cat}`;
+
+    const res = await fetch(url);
     const data = await res.json();
-    setImages(data.files);
+    setProducts(data);
   };
 
   useEffect(() => {
-    loadImages();
-  }, []);
+    loadProducts(category);
+  }, [category]);
 
   return (
     <main style={{ padding: "40px" }}>
-      <h1>상품 목록</h1>
+      <h1>Products</h1>
 
-      <div style={styles.grid}>
-        {images.length === 0 && <p>등록된 상품이 없습니다.</p>}
+      <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
+        <button onClick={() => setCategory("all")}>All</button>
+        <button onClick={() => setCategory("men")}>Men</button>
+        <button onClick={() => setCategory("women")}>Women</button>
+      </div>
 
-        {images.map((img) => (
-          <div key={img} style={styles.card}>
-            <img
-              src={`/images/${img}`}
-              alt={img}
-              style={styles.image}
-            />
-            <p style={styles.title}>{img}</p>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+        {products.map((p) => (
+          <div key={p.id} style={{ border: "1px solid #ddd", padding: "10px" }}>
+            <img src={p.image} style={{ width: "100%", borderRadius: "8px" }} />
+            <h3 style={{ marginTop: "10px" }}>{p.name}</h3>
+            <p>{p.category.toUpperCase()}</p>
           </div>
         ))}
       </div>
     </main>
   );
 }
-
-const styles = {
-  grid: {
-    marginTop: "30px",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-    gap: "20px",
-  },
-  card: {
-    padding: "20px",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    textAlign: "center",
-    backgroundColor: "#fff",
-  },
-  image: {
-    width: "100%",
-    height: "250px",
-    objectFit: "cover",
-    borderRadius: "8px",
-  },
-  title: {
-    marginTop: "10px",
-    fontSize: "16px",
-    fontWeight: "bold",
-  },
-};
