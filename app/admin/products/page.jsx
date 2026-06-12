@@ -3,24 +3,21 @@
 import { useEffect, useState } from "react";
 
 export default function AdminProductsPage() {
-  const [products, setProducts] = useState([]); // 전체 상품 객체
-  const [featured, setFeatured] = useState([]); // 대표 상품 이미지 경로 배열
+  const [products, setProducts] = useState([]);
+  const [featured, setFeatured] = useState([]);
 
-  // 전체 상품 로드
   const loadProducts = async () => {
     const res = await fetch("/api/products/list");
     const data = await res.json();
-    setProducts(data); // 상품 객체 배열
+    setProducts(data);
   };
 
-  // 대표 상품 로드
   const loadFeatured = async () => {
     const res = await fetch("/featured.json");
     const data = await res.json();
     setFeatured(data || []);
   };
 
-  // 대표 설정
   const setAsFeatured = async (image) => {
     await fetch("/api/home/feature", {
       method: "POST",
@@ -29,7 +26,6 @@ export default function AdminProductsPage() {
     loadFeatured();
   };
 
-  // 대표 취소
   const removeFeatured = async (image) => {
     await fetch("/api/home/unfeature", {
       method: "POST",
@@ -38,7 +34,6 @@ export default function AdminProductsPage() {
     loadFeatured();
   };
 
-  // 상품 삭제
   const deleteProduct = async (image) => {
     await fetch("/api/products/delete", {
       method: "POST",
@@ -66,15 +61,15 @@ export default function AdminProductsPage() {
           {featured.length === 0 && <p>대표 상품이 없습니다.</p>}
 
           {products
-            .filter((p) => featured.includes(p.image))
+            .filter((p) => featured.includes(p.images?.[0]))
             .map((p) => (
               <div key={p.id} style={styles.card}>
-                <img src={p.image} style={styles.image} />
+                <img src={p.images?.[0]} style={styles.image} />
                 <h3>{p.name}</h3>
                 <p>{p.category.toUpperCase()}</p>
 
                 <button
-                  onClick={() => removeFeatured(p.image)}
+                  onClick={() => removeFeatured(p.images?.[0])}
                   style={styles.unfeatureBtn}
                 >
                   대표 취소
@@ -90,22 +85,22 @@ export default function AdminProductsPage() {
 
         <div style={styles.grid}>
           {products
-            .filter((p) => !featured.includes(p.image)) // 대표 제외
+            .filter((p) => !featured.includes(p.images?.[0]))
             .map((p) => (
               <div key={p.id} style={styles.card}>
-                <img src={p.image} style={styles.image} />
+                <img src={p.images?.[0]} style={styles.image} />
                 <h3>{p.name}</h3>
                 <p>{p.category.toUpperCase()}</p>
 
                 <button
-                  onClick={() => setAsFeatured(p.image)}
+                  onClick={() => setAsFeatured(p.images?.[0])}
                   style={styles.featureBtn}
                 >
                   대표 설정
                 </button>
 
                 <button
-                  onClick={() => deleteProduct(p.image)}
+                  onClick={() => deleteProduct(p.images?.[0])}
                   style={styles.deleteBtn}
                 >
                   삭제
